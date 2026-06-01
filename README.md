@@ -29,11 +29,11 @@ A few things I've built that touched real numbers, not just demos:
 ## I write about what I learn
 
 I try to write the post I wish I'd found mid-debug. Recent ones:
+- [Git Worktrees](https://pulkitxm.com/git-worktrees)
 - [The Cookie Sync Pattern](https://pulkitxm.com/cookie-sync-pattern)
 - [An MCP Server That Writes Itself](https://pulkitxm.com/mcp-server-that-writes-itself)
 - [Rate Limiting](https://pulkitxm.com/rate-limiting)
 - [Cron Jobs with BullMQ](https://pulkitxm.com/cron-jobs-with-bullmq)
-- [Invisible Scissors](https://pulkitxm.com/clip-path-reveals)
 
 
 → All of it lives at **[pulkitxm.com](https://pulkitxm.com)**. I also talked through a lot of this on a podcast with **Harkirat Singh**!!
