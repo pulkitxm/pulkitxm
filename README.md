@@ -17,15 +17,6 @@ I started in 8th grade, nudging HTML and CSS around until a page finally looked 
 
 Right now I'm working as a **Software Engineer at [Noveum.ai](https://noveum.ai)** (which sponsors my AI inference costs) and building [API.market](https://api.market) at **[MagicAPI](https://magicapi.com)**, the kind of work that pages you at 2am if you get it wrong: money, infra, and the plumbing nobody sees until it breaks.
 
-## Work I'm proud of
-
-A few things I've built that touched real numbers, not just demos:
-
-- **Wallet & billing system** on [API.market](https://api.market): handles **$50K+** in transactions across **23,758+ operations** for **1,165+ users**, deducting balances in real time on every API call.
-- **Voucher & credit engine** that's distributed **$6.3K+** through targeted (email-specific) and public (limit-based) campaigns.
-- **AWS migration** off OVHCloud, from scratch: EKS clusters, ECR, S3, CodeBuild CI/CD, WAF and IAM, all inside a VPC.
-- **Trace → dataset ETL pipeline** with BullMQ workers on Kubernetes, plus the **traces & datasets UI** (timelines, flow graphs, filters) that teams use to debug and evaluate AI agents.
-
 ## I write about what I learn
 
 I try to write the post I wish I'd found mid-debug. Recent ones:
@@ -38,14 +29,7 @@ I try to write the post I wish I'd found mid-debug. Recent ones:
 
 → All of it lives at **[pulkitxm.com](https://pulkitxm.com)**. I also talked through a lot of this on a podcast with **Harkirat Singh**!!
 
-[![](./media/pod.png)](https://youtu.be/tmITb7u662M)
-
-## Beyond the code
-
-- **Founder & Chairperson, [Deviators Coding Club](https://deviatorsclub.tech)** (2024-25): built an independent college coding club from zero and ran workshops, events, and a 36-hour hackathon for 350+ people. We introduced a coding culture to a college that was purely academics-focused.
-- **ICPC Amritapuri 2023** regionalist.
-- **Gurugram University Ideathon** winner with [wanderAI](https://github.com/pulkitxm/WanderAI) (got an award from the CM of Haryana for this :) )
-
+[<img src="./media/pod.png" width="500" />](https://youtu.be/tmITb7u662M)
 ---
 
 <div align="center">
