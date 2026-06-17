@@ -1,0 +1,16 @@
+{
+  "name": "video-demos-cloud-directory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Download claude-directory demo.mp4 files and upload them to Cloudinary for HLS streaming.",
+  "scripts": {
+    "start": "node index.js",
+    "list": "node index.js --list",
+    "dry-run": "node index.js --dry-run"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.5"
+  }
+}
