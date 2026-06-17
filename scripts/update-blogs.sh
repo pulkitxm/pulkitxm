@@ -17,7 +17,7 @@ if [ "$BLOGS_JSON" = "[]" ] || [ -z "$BLOGS_JSON" ]; then
 fi
 
 # Sort by date descending and get top 5
-BLOGS=$(echo "$BLOGS_JSON" | jq -r '.data | sort_by(.date) | reverse | .[0:5] | .[] | "- [\(.title)](https://pulkitxm.com/\(.slug))"' 2>/dev/null)
+BLOGS=$(echo "$BLOGS_JSON" | jq -r '.data | sort_by(.date) | reverse | .[0:5] | .[] | "- [\(.title)](https://pulkitxm.com\(.url))"' 2>/dev/null)
 
 if [ -z "$BLOGS" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: Failed to parse blogs JSON"
