@@ -4,7 +4,7 @@ set -e
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 README_PATH="$REPO_DIR/README.md"
-API_URL="https://pulkitxm.com/api/blogs"
+API_URL="https://www.pulkit.blog/api/blogs"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting blog update..."
 
@@ -17,7 +17,7 @@ if [ "$BLOGS_JSON" = "[]" ] || [ -z "$BLOGS_JSON" ]; then
 fi
 
 # Sort by date descending and get top 5
-BLOGS=$(echo "$BLOGS_JSON" | jq -r '.data | sort_by(.date) | reverse | .[0:5] | .[] | "- [\(.title)](https://pulkitxm.com\(.url))"' 2>/dev/null)
+BLOGS=$(echo "$BLOGS_JSON" | jq -r '.data | sort_by(.date) | reverse | .[0:5] | .[] | "- [\(.title)](https://www.pulkit.blog\(.url))"' 2>/dev/null)
 
 if [ -z "$BLOGS" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: Failed to parse blogs JSON"
@@ -53,7 +53,7 @@ mv "$README_PATH.tmp" "$README_PATH"
 # Commit and push
 cd "$REPO_DIR"
 git add README.md
-git commit -m "chore: update latest blogs from pulkitxm.com"
+git commit -m "chore: update latest blogs from pulkit.blog"
 git push origin main
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Successfully updated and committed blogs."
