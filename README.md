@@ -20,11 +20,11 @@ Right now I'm working as a **Software Engineer at [Noveum.ai](https://noveum.ai)
 ## I write about what I learn
 
 I try to write the post I wish I'd found mid-debug. Recent ones:
+- [Kaksha: The App I Built for My Mother](https://www.pulkit.blog/kaksha)
 - [Partial Clones, Shallow Clones, and Sparse Checkout](https://www.pulkit.blog/git-partial-clones)
 - [My First Talk: Claude Directory](https://www.pulkit.blog/my-first-talk)
 - [Git Worktrees](https://www.pulkit.blog/git-worktrees)
 - [The Cookie Sync Pattern](https://www.pulkit.blog/cookie-sync-pattern)
-- [An MCP Server That Writes Itself](https://www.pulkit.blog/mcp-server-that-writes-itself)
 
 
 → All of it lives at **[pulkit.page](https://pulkit.page)**. I also talked through a lot of this on a podcast with **Harkirat Singh**!!
