@@ -1,0 +1,101 @@
+name: Publish Resume
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - resume/resume.tex
+      - resume/Dockerfile
+      - resume/Makefile
+      - scripts/publish-resume.sh
+      - .github/workflows/resume.yml
+  pull_request:
+    paths:
+      - resume/resume.tex
+      - resume/Dockerfile
+      - resume/Makefile
+      - scripts/publish-resume.sh
+      - .github/workflows/resume.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Build PDF
+        run: make -C resume -B AC=docker
+      - name: Validate PDF
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends qpdf poppler-utils
+          qpdf --check resume/resume.pdf
+          pdfinfo resume/resume.pdf
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          name: resume
+          path: resume/resume.pdf
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: pukbot-production
+    concurrency:
+      group: publish-resume
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: resume
+          path: built-resume
+      - name: Install Pukbot
+        env:
+          PUKBOT_VERSION: v0.3.30
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL --retry 3 \
+            "https://github.com/pulkitxm/pukbot/releases/download/$PUKBOT_VERSION/pukbot-linux-x86_64" \
+            -o "$RUNNER_TEMP/pukbot"
+          printf '%s  %s\n' \
+            bd2539c5a5d45650bd80ba48efc6e42ca14251b2eb0e586622ed064652c8e033 \
+            "$RUNNER_TEMP/pukbot" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/pukbot"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+      - id: app-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        with:
+          client-id: ${{ vars.PUKBOT_CLIENT_ID }}
+          private-key: ${{ secrets.PUKBOT_PRIVATE_KEY }}
+          owner: pulkitxm
+          repositories: |
+            pulkitxm
+            pulkit.page
+          permission-contents: write
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          repository: pulkitxm/pulkit.page
+          ref: main
+          path: website
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
+      - name: Publish both copies through Pukbot
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: bash scripts/publish-resume.sh
