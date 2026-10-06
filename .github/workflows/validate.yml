@@ -1,0 +1,28 @@
+name: Validate Automation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/**
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - scripts/**
+      - .github/workflows/**
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Check automation scripts
+        run: |
+          shellcheck scripts/*.sh
+          python3 -m unittest discover -s scripts -p 'test_*.py' -v
