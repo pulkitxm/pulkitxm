@@ -2,18 +2,39 @@ name: Update Latest Blogs
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight UTC
-  workflow_dispatch:      # Allow manual trigger
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: update-blogs
+  cancel-in-progress: false
+
 jobs:
   update-blogs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     environment: pukbot-production
-
     steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Pukbot
+        env:
+          PUKBOT_VERSION: v0.3.30
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL --retry 3 \
+            "https://github.com/pulkitxm/pukbot/releases/download/$PUKBOT_VERSION/pukbot-linux-x86_64" \
+            -o "$RUNNER_TEMP/pukbot"
+          printf '%s  %s\n' \
+            bd2539c5a5d45650bd80ba48efc6e42ca14251b2eb0e586622ed064652c8e033 \
+            "$RUNNER_TEMP/pukbot" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/pukbot"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
       - id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
         with:
@@ -22,15 +43,7 @@ jobs:
           owner: pulkitxm
           repositories: pulkitxm
           permission-contents: write
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          fetch-depth: 0
-          token: ${{ steps.app-token.outputs.token }}
-
-      - name: Configure git
-        run: |
-          git config user.name "pukbot[bot]"
-          git config user.email "320458784+pukbot[bot]@users.noreply.github.com"
-
       - name: Update blogs
-        run: ./scripts/update-blogs.sh
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: bash scripts/update-blogs.sh
