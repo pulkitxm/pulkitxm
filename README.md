@@ -7,7 +7,7 @@ I like building websites and the tech behind it that does the hard work behind t
 [![Portfolio](https://img.shields.io/badge/pulkit.page-000000?style=flat-square&logo=vercel&logoColor=white)](https://pulkit.page)
 [![X](https://img.shields.io/badge/@_pulkitxm-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/_pulkitxm)
 [![LinkedIn](https://img.shields.io/badge/in/pulkitxm-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pulkitxm)
-[![Email](https://img.shields.io/badge/kpulkit15234-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:kpulkit15234@gmail.com)
+[![Email](https://img.shields.io/badge/me@pulkit.page-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:me@pulkit.page)
 
 </div>
 
