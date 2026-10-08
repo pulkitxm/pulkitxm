@@ -1,0 +1,23 @@
+name: LaTeX PDF
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v4
+        with:
+          root_file: 'resume/resume.tex'
+          work_in_root_file_dir: true
+          args: '-norc -pdf -no-shell-escape -file-line-error -halt-on-error -interaction=nonstopmode'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: latex-15f947a9-2870-418d-89f4-df173be538e7
+          path: 'resume/resume.pdf'
+          if-no-files-found: error
