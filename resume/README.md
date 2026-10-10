@@ -42,34 +42,24 @@ rerunning the workflow repairs the missing copy.
 
 ### Local builds
 
-The PDF is built inside a container, so no local TeX Live install is needed and the
-output is identical on every machine. The [`Dockerfile`](./Dockerfile) pins Alpine
-plus the TeX packages this resume uses, and `SOURCE_DATE_EPOCH` is derived from the
-last commit that touched `resume.tex` so rebuilds are reproducible.
+The PDF is built with a local [TinyTeX](https://yihui.org/tinytex/) install, which
+needs no `sudo`. [`install-deps.sh`](./install-deps.sh) installs TinyTeX when it is
+missing and then the TeX packages this resume uses:
+
+```sh
+make deps
+```
+
+The `Makefile` finds TinyTeX itself, so no `PATH` setup is needed.
+`SOURCE_DATE_EPOCH` is derived from the last commit that touched `resume.tex`, so
+rebuilds of the same source are reproducible.
 
 ```sh
 make
-make image
-make shell
 make clean
 make distclean
 ```
 
-`make` builds the PDF, `make image` builds the container image, and `make shell`
-opens a shell in the container. `make clean` removes auxiliary files, while
-`make distclean` also removes the PDF and container image. Use `make -B` to force
-a rebuild of an existing PDF, as the publishing workflow does.
-
-### ac
-
-The `Makefile` drives containers with [`ac`](https://github.com/pulkitxm/ac), a
-project runner for [Apple Container](https://github.com/apple/container) on macOS.
-Apple Container has no `docker compose` equivalent, so `ac` fills that gap with
-declarative JSON stacks, readiness gating, and strict daemon ownership: it never
-touches a container daemon it did not start. The `Makefile` only uses its
-Docker-shaped subset (`build`, `run`, `image ls`, `rmi`), so any Docker-compatible
-CLI can be swapped in:
-
-```sh
-make AC=docker
-```
+`make` builds the PDF, `make clean` removes auxiliary files, and `make distclean`
+also removes the PDF. Use `make -B` to force a rebuild of an existing PDF, as the
+publishing workflow does.
