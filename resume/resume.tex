@@ -1,191 +1,128 @@
-% Document class and basic packages
 \documentclass[letterpaper,11pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[letterpaper,top=0.18in,bottom=0.18in,left=0.34in,right=0.34in]{geometry}
 \usepackage{titlesec}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{tabularx}
 \usepackage{fontawesome5}
-\usepackage{multicol}
-\usepackage{textcase}
+\usepackage{accsupp}
 
-% Document setup
-\definecolor{headerColor}{RGB}{0,0,0}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\setlength{\footskip}{4.08003pt}
-
-% Font configuration
 \input{glyphtounicode}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \renewcommand{\sfdefault}{phv}
 \renewcommand{\rmdefault}{ptm}
 
-% Page layout
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
-
+\pdfgentounicode=1
+\pdfinterwordspaceon
+\pdftrailerid{}
+\hypersetup{pdftitle={Pulkit Resume},pdfauthor={Pulkit}}
 \urlstyle{same}
 
-\raggedbottom%
-\raggedright%
-\setlength{\tabcolsep}{0in}
-\titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{headerColor}\titlerule%
-\vspace{-5pt}]
-\pdfgentounicode=1
-% Reproducible PDF (no random ID)
-\pdftrailerid{}
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\setlength{\parindent}{0pt}
 
-\newcommand{\resumeItem}[1]{
-  \item{
-    {#1 \vspace{-2pt}}
-  }
-}
+\titleformat{\section}{\scshape\raggedright\fontsize{12}{14}\selectfont\bfseries}{}{0em}{}[\vspace{1pt}\titlerule]
+\titlespacing*{\section}{0pt}{2pt}{1.5pt}
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
-}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textbf{ #2} \\
-      \textit{#3} & \textit{ #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\icon}[1]{\BeginAccSupp{ActualText={}}\raisebox{-0.15\height}{#1}\EndAccSupp{}}
+\newcommand{\link}[2]{\href{#1}{\underline{#2}}}
+\newcommand{\contact}[3]{\href{#2}{\icon{#1}\,\underline{#3}}}
+\newcommand{\role}[4]{\item \textbf{#1} \hfill \textbf{#2}\\ \textit{\small #3} \hfill \textit{\small #4}}
+\newcommand{\project}[3]{\item \textbf{#1} \textbar{} \textit{\small #2} \hfill \textbf{#3}}
+\newcommand{\entriesStart}{\begin{itemize}[leftmargin=0in,label={},itemsep=1pt,parsep=0pt,topsep=0pt,partopsep=0pt]}
+\newcommand{\entriesEnd}{\end{itemize}}
+\newcommand{\bulletsStart}{\begin{itemize}[leftmargin=0.17in,label={\small\textbullet},itemsep=0pt,parsep=0pt,topsep=1pt,partopsep=0pt]\fontsize{9.9}{10.85}\selectfont}
+\newcommand{\bulletsEnd}{\end{itemize}}
 
 \begin{document}
+
 \begin{center}
-	{\Huge \scshape Pulkit} \\ \vspace{3pt}
-	New Delhi, India \\ \vspace{3pt}
-	\small
-	\href{https://pulkit.page}{\raisebox{-0.2\height}\faLink\ \underline{pulkit.page}} ~
-	\href{mailto:me@pulkit.page}{\raisebox{-0.2\height}\faEnvelope\ \underline{me@pulkit.page}} ~
-	\href{https://www.linkedin.com/in/pulkitxm}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/pulkitxm}} ~
-	\href{https://github.com/Pulkitxm}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/pulkitxm}}
-	\vspace{-12pt}
+  {\huge \scshape Pulkit} \\ \vspace{1pt}
+  Software Engineer \textbar{} New Delhi, India \\ \vspace{2pt}
+  \small
+  \contact{\faLink}{https://pulkit.page}{pulkit.page} \quad
+  \contact{\faEnvelope}{mailto:me@pulkit.page}{me@pulkit.page} \quad
+  \contact{\faLinkedin}{https://www.linkedin.com/in/pulkitxm}{linkedin.com/in/pulkitxm} \quad
+  \contact{\faGithub}{https://github.com/pulkitxm}{github.com/pulkitxm}
 \end{center}
-
-\section{Education}
-\resumeSubHeadingListStart%
-\resumeSubheading%
-{Bachelor of Technology in Computer Science}{Gurugram, Haryana, India}
-{Dronacharya College of Engineering}{Oct. 2022 – Present}
-\resumeSubHeadingListEnd%
-
-\section{Experience}
-\resumeSubHeadingListStart%
-
-\resumeSubheading%
-{Software Engineer}{Feb. 2025 - Present}
-{\href{https://www.magicapi.com}{MagicAPI}}{Remote, San Francisco, CA, USA}
-\resumeItemListStart%
-\resumeItem{Built ETL pipeline using BullMQ workers on Kubernetes to convert traces into datasets, with Redis handling async background jobs.}
-\resumeItem{Led AWS migration from OVHCloud - set up EKS clusters, ECR for images, S3 for storage, CodeBuild CI/CD, WAF, and IAM access within VPC.}
-\resumeItem{Built traces UI for debugging agent runs (timeline, flow graphs, filters) and datasets UI for evaluating AI agents.}
-\resumeItem{Built voucher/credit system on {\href{https://api.market}{API.market}} distributing \$6.3K+ with support for targeted (email-specific) and public (limit-based) campaigns.}
-\resumeItem{Developed wallet system on {\href{https://api.market}{API.market}} processing \$50K+ in transactions (23,758+ operations, 1,165+ users) with real-time balance deduction for API usage.}
-\resumeItemListEnd%
-
-\resumeSubheading%
-{Software Engineer}{Feb. 2025 - March 2025}
-{\href{https://www.crowdvolt.com}{CrowdVolt (YC W24)}}{Remote, NYC}
-\resumeItemListStart%
-\resumeItem{Set up ESLint and Prettier configs to enforce coding standards across the codebase.}
-\resumeItem{Improved site performance using lazy loading, code splitting, and asset optimization for faster load times.}
-\resumeItem{Fixed critical bugs affecting user experience and platform stability.}
-\resumeItemListEnd%
-
-\resumeSubheading%
-{Full Stack Engineer Intern}{April 2024 - Sept. 2024}
-{\href{https://www.datawavelabs.io}{Datawavelabs}}{Remote, India}
-\resumeItemListStart%
-\resumeItem{Built authentication system with JWT tokens, Google OAuth sign-in, and role-based access control.}
-\resumeItem{Created multi-cloud integration(¡AWS, Azure etc.) for so users could manage all cloud resources from one dashboard.}
-\resumeItem{Set up automated Docker container deployment with real-time status updates using Event Source.}
-\resumeItemListEnd%
-
-\resumeSubHeadingListEnd%
-\vspace{-18pt}
-
-\section{Technical Projects}
-\vspace{-1pt}
-\begin{itemize}[leftmargin=*,itemsep=2pt,parsep=0pt,topsep=0pt,partopsep=0pt]
-
-	\item \textbf{\href{https://devolympus.deviatorsclub.tech}{Devolympus Hackathon Platform}} $|$ \emph{NextJS, PostgreSQL, GCP, OAuth 2.0}\hfill {April 2024}
-	      \begin{itemize}[leftmargin=*,itemsep=1pt,parsep=0pt,topsep=0pt,partopsep=0pt]
-		      \item Built hackathon management system handling 350+ registrations and 80 teams, cutting admin work by 80\%.
-		      \item Added Google OAuth login, built REST APIs for team registration, payment management, and document uploads to GCP Storage.
-		      \item Created admin dashboard with role-based access and PostgreSQL/Prisma backend for managing applications, teams, payments, and sending bulk emails.
-	      \end{itemize}
-
-	\item \textbf{\href{https://github.com/pulkitxm/deployIt}{Deployit}} $|$ \emph{NextJS, Docker, Redis, EC2, Shell Scripting}\hfill {August 2024}
-	      \begin{itemize}[leftmargin=*,itemsep=1pt,parsep=0pt,topsep=0pt,partopsep=0pt]
-		      \item Built deployment platform where users can deploy repos via custom slug URLs with automated build pipelines.
-		      \item Used Redis for deployment queues, shell scripts for builds, and CloudFront CDN for serving static assets.
-		      \item Set up reverse proxy with Nginx to route traffic to deployed containers based on custom slugs.
-	      \end{itemize}
-
-\end{itemize}
-\vspace{-12pt}
-
-\section{Technical Skills}
-\begin{itemize}[leftmargin=*,itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt]
-	\item \textbf{Languages \& Core:} TypeScript, JavaScript, Python, C++, SQL, Node.js, Express.js, Hono, FastAPI
-	\item \textbf{Frontend \& UI:} NextJS, React.js, Tailwind CSS, Shadcn/ui, Redux, HTML5, CSS3
-	\item \textbf{Infrastructure:} Docker, Kubernetes, AWS (EKS, EC2, S3, ECR, CodeBuild, WAF), Azure, GCP, GitHub Actions
-	\item \textbf{Databases:} PostgreSQL, MongoDB, Redis, Elasticsearch
-	\item \textbf{Tools:} Git, BullMQ, Prisma ORM, JWT, OAuth 2.0, REST, GraphQL
-\end{itemize}
 \vspace{-10pt}
 
+\section{Summary}
+{\fontsize{9.9}{11.2}\selectfont Software engineer with 1.5+ years shipping production systems at an AI startup: queue pipelines, LLM evals, billing ledgers and Kubernetes infrastructure on AWS and GCP, end to end in TypeScript, Node.js, Next.js, PostgreSQL, ClickHouse and Terraform.\par}
+
+\section{Experience}
+\entriesStart
+
+\role{Software Engineer}{Feb 2025 - Present}{\href{https://www.magicapi.com}{MagicAPI} (\href{https://noveum.ai}{Noveum.ai}, \href{https://api.market}{API.market})}{Remote, San Francisco, CA, USA}
+\bulletsStart
+\item Re-architected LLM trace ingestion into an \textbf{async BullMQ/Redis queue} (up to \textbf{10,000-trace batches}) on Kubernetes.
+\item Expanded the worker fleet to \textbf{10+ Docker deployments} (ETL, evals, analytics, billing), then root-caused an \textbf{8.5-hour eval stall} to KEDA ignoring BullMQ prioritized queues and replaced it with fixed-replica hot, LLM (Spot) and cron pools on GKE.
+\item Built the \textbf{LLM evaluation pipeline end-to-end}: an ETL service turning production AI-agent traces into datasets by running customers' Python transform code in a sandbox, shipping batch and realtime eval jobs behind \textbf{15+ REST endpoints}.
+\item Led the \textbf{AWS migration from OVHCloud} (EKS clusters, ECR, S3, CodeBuild CI/CD, WAF, IAM within a VPC), then the move from \textbf{AWS EKS to Google Cloud (GCP)} as Infrastructure as Code (IaC): \textbf{6 OpenTofu (Terraform) modules}, 2 Helm charts and Cloud Deploy CI/CD on private GKE; fixed \textbf{5 launch-blocking defects}; proved Cloud SQL restore in \textbf{6m17s}.
+\item Optimized analytics performance: moved \textbf{20+ dashboard endpoints} from live ClickHouse to precomputed PostgreSQL snapshots, cut peak rollup query memory for a heavy tenant from \textbf{4.01 to 1.75 GiB} via 90-day chunking, and removed \textbf{21\% duplicate spans}.
+\item Rebuilt usage billing as a \textbf{PostgreSQL credit ledger} that reserves credits before paid work and settles after (per-org locks, idempotency keys), so concurrent jobs cannot overspend or double-charge; added \textbf{AWS Marketplace billing} (SQS, EventBridge).
+\item Launched the \textbf{public TypeScript API} used by the tracing SDK (100+ tests), moved 10+ Next.js route handlers into one Node.js/Hono API with Redis rate limiting, and built a \textbf{Model Context Protocol (MCP) server} exposing \textbf{220+ OpenAPI routes} as tools.
+\item Architected and led the initial build of Orbit, an open-source realtime issue tracker (\textbf{60+ GitHub stars}) replacing Linear in-house: a \textbf{60+ table PostgreSQL schema}, a filter engine compiled to SQL, and sync of 20+ data types via Redis pub/sub and Bun WebSockets.
+\item Built the prepaid wallet for API.market, an API marketplace, in Next.js, Prisma and Stripe (\textbf{\$50K+ in transactions}, 23K+ operations, 1.1K+ users) and a voucher system distributing \textbf{\$6.3K+} via targeted (email-specific) and public (limit-based) campaigns.
+\bulletsEnd
+
+\role{Software Engineer}{Feb 2025 - Mar 2025}{\href{https://www.crowdvolt.com}{CrowdV{}olt (YC W24)}}{Remote, NYC}
+\bulletsStart
+\item Set up shared \textbf{ESLint and Prettier} configs to enforce coding standards across a Turborepo monorepo (web, mobile, 7 packages).
+\item Improved site performance using \textbf{lazy loading, code splitting and asset optimization} for faster load times.
+\item Fixed \textbf{critical bugs} affecting user experience and platform stability.
+\bulletsEnd
+
+\role{Full Stack Engineer Intern}{Apr 2024 - Sep 2024}{\href{https://www.datawavelabs.io}{Datawavelabs}}{Remote, India}
+\bulletsStart
+\item Built the FastAPI backend (\textbf{35+ REST endpoints}) of a multi-cloud platform so users could manage AWS, Azure and GCP resources from one dashboard, with live credential checks, JWT sessions, Google OAuth and role-based access control (RBAC).
+\item Automated \textbf{AWS EKS cluster create and teardown} from the API by launching Terraform runner containers in Docker, streaming live status to the React UI over Redis Pub/Sub and Server-Sent Events (SSE).
+\bulletsEnd
+
+\entriesEnd
+
+\section{Projects}
+\entriesStart
+
+\project{\href{https://devolympus.deviators.club}{Devolympus Hackathon Platform}}{Next.js, PostgreSQL, Prisma, Cloudinary, OAuth 2.0}{Apr 2025}
+\bulletsStart
+\item Built a \textbf{hackathon management system} handling \textbf{350+ registrations} and \textbf{80+ teams}, cutting admin work by \textbf{80\%}.
+\item Added Google OAuth login and built team registration, payment management, and document uploads to Cloudinary.
+\item Created an \textbf{admin dashboard} with role-based access and a PostgreSQL/Prisma backend for managing applications, teams, and payments.
+\bulletsEnd
+
+\project{\href{https://github.com/pulkitxm/deployIt}{Deployit}}{Next.js, Docker, Redis, S3, Express}{Oct 2024}
+\bulletsStart
+\item Built a \textbf{deployment platform} where users deploy repos via custom slug URLs with automated build pipelines.
+\item Used \textbf{Redis for deployment queues}, isolated \textbf{Docker build containers}, and S3 for serving static assets.
+\item Set up an \textbf{Express reverse proxy} to route traffic to deployed sites based on custom slugs.
+\bulletsEnd
+
+\entriesEnd
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0in,label={},itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt]\fontsize{9.9}{11}\selectfont
+\item \textbf{Languages}: TypeScript, JavaScript, Python, C++, SQL, HTML, CSS, Bash, HCL, YAML \textbar{} \textbf{CS Fundamentals}: DSA, Distributed Systems
+\item \textbf{Frontend}: Next.js, React, Redux, Tailwind CSS, Shadcn/ui \textbar{} \textbf{Backend}: Node.js, Express.js, Bun, Hono, FastAPI, BullMQ
+\item \textbf{APIs and Data}: REST APIs, GraphQL, WebSockets, SSE, PostgreSQL, ClickHouse, MongoDB, Redis, Elasticsearch, Prisma, Stripe
+\item \textbf{Cloud}: AWS (EKS, EC2, S3, ECR, CodeBuild, WAF, SQS, Bedrock), GCP (GKE, Cloud SQL), Azure \textbar{} \textbf{AI}: LLM evaluation, MCP
+\item \textbf{DevOps and Tools}: Kubernetes, Docker, Helm, Terraform, OpenTofu, GitHub Actions, CI/CD, Git, JWT, OAuth 2.0
+\end{itemize}
+
+\section{Education}
+\textbf{B.Tech in Computer Science}, {\small Dronacharya College of Engineering, Gurugram, Haryana, India} \hfill \textbf{2022 - 2026}
+
 \section{Leadership \& Achievements}
-\begin{itemize}[leftmargin=*,itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt]
-	\item \textbf{OpenAI Codex Hackathon}: Secured 7th position for {\href{https://github.com/pulkitxm/warden}{Warden}}, a trust layer for packages and agent diffs before they run.
-	\item \textbf{Chairperson, Deviators Coding Club (2024-2025)}: Founded and led an independent college coding club. Organized workshops, tech events, and a 36-hour hackathon with 350+ participants.
-	\item \textbf{ICPC Amritapuri 2023 Regionalist}: Qualified for the regional round of the global programming competition.
-	\item \textbf{Gurugram University Ideathon Winner}: Secured first place for AI-driven travel solutions, awarded by the Chief Minister of Haryana.
+\begin{itemize}[leftmargin=0.17in,label={\small\textbullet},itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt]\fontsize{9.9}{11}\selectfont
+\item \textbf{OpenAI Codex Hackathon}: Secured 7th position for \link{https://github.com/pulkitxm/warden}{Warden}, a trust layer for packages and agent diffs before they run.
+\item \textbf{KRMU Hackathon}: Won 1st place in the AI track with \link{https://github.com/pulkitxm/WanderAI}{WanderAI}.
+\item \textbf{Chairperson, Deviators Coding Club (2024 - 2025)}: Founded and led an independent college coding club. Organized workshops, tech events, and DevOlympus, a hackathon with 350+ participants.
+\item \textbf{ICPC Amritapuri 2023 Regionalist}: Qualified for the regional round of the global programming competition.
+\item \textbf{Gurugram University Ideathon Winner}: Secured first place for AI-driven travel solutions, awarded by the Chief Minister of Haryana.
 \end{itemize}
 
 \end{document}
