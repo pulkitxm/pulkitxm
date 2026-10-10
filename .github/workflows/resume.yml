@@ -5,15 +5,15 @@ on:
     branches: [main]
     paths:
       - resume/resume.tex
-      - resume/Dockerfile
       - resume/Makefile
+      - resume/install-deps.sh
       - scripts/publish-resume.sh
       - .github/workflows/resume.yml
   pull_request:
     paths:
       - resume/resume.tex
-      - resume/Dockerfile
       - resume/Makefile
+      - resume/install-deps.sh
       - scripts/publish-resume.sh
       - .github/workflows/resume.yml
   workflow_dispatch:
@@ -30,8 +30,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Install TeX
+        run: make -C resume deps
       - name: Build PDF
-        run: make -C resume -B AC=docker
+        run: make -C resume -B
       - name: Validate PDF
         run: |
           sudo apt-get update -qq

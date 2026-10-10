@@ -8,7 +8,7 @@ test -s "$pdf"
 
 git fetch --quiet origin main
 if ! git diff --quiet "$source_sha" origin/main -- \
-  resume/resume.tex resume/Dockerfile resume/Makefile \
+  resume/resume.tex resume/Makefile resume/install-deps.sh \
   scripts/publish-resume.sh .github/workflows/resume.yml; then
   echo 'A newer resume build is pending; skipping this outdated PDF.'
   exit 0
