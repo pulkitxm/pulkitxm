@@ -15,9 +15,11 @@ export SOURCE_DATE_EPOCH FORCE_SOURCE_DATE
 AUX      := $(SRC:.tex=.aux) $(SRC:.tex=.log) $(SRC:.tex=.out) \
             $(SRC:.tex=.fls) $(SRC:.tex=.fdb_latexmk) $(SRC:.tex=.synctex.gz)
 
-.PHONY: all deps clean distclean
+.PHONY: all pdf deps clean distclean
 
 all: $(PDF)
+
+pdf: $(PDF)
 
 deps:
 	./install-deps.sh
