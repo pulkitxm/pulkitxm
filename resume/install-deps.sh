@@ -12,11 +12,10 @@ fi
 
 tlmgr=$(ls "$root"/bin/*/tlmgr | head -n 1)
 "$tlmgr" install \
+  accsupp \
   babel-english \
   enumitem \
-  fancyhdr \
   fontawesome5 \
+  geometry \
   lm \
-  preprint \
-  textcase \
   titlesec
