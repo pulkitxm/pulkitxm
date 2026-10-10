@@ -61,5 +61,4 @@ make distclean
 ```
 
 `make` or `make pdf` builds the PDF, `make clean` removes auxiliary files, and
-`make distclean` also removes the PDF. Use `make -B` to force a rebuild of an
-existing PDF, as the publishing workflow does.
+`make distclean` also removes the PDF. Every build recompiles from scratch.

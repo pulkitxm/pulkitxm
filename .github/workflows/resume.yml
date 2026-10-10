@@ -33,7 +33,7 @@ jobs:
       - name: Install TeX
         run: make -C resume deps
       - name: Build PDF
-        run: make -C resume -B
+        run: make -C resume pdf
       - name: Validate PDF
         run: |
           sudo apt-get update -qq

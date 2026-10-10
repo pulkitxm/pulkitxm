@@ -15,7 +15,7 @@ export SOURCE_DATE_EPOCH FORCE_SOURCE_DATE
 AUX      := $(SRC:.tex=.aux) $(SRC:.tex=.log) $(SRC:.tex=.out) \
             $(SRC:.tex=.fls) $(SRC:.tex=.fdb_latexmk) $(SRC:.tex=.synctex.gz)
 
-.PHONY: all pdf deps clean distclean
+.PHONY: all pdf deps clean distclean $(PDF)
 
 all: $(PDF)
 
