@@ -15,7 +15,7 @@ tlmgr=$(ls "$root"/bin/*/tlmgr | head -n 1)
   accsupp \
   babel-english \
   enumitem \
-  fontawesome5 \
+  fontawesome7 \
   geometry \
   lm \
   titlesec
