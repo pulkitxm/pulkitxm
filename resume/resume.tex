@@ -60,28 +60,26 @@
 
 \role{Software Engineer}{Feb 2025 - Present}{\href{https://www.magicapi.com}{MagicAPI} (\href{https://noveum.ai}{Noveum.ai}, \href{https://api.market}{API.market})}{Remote, San Francisco, CA, USA}
 \bulletsStart
-\item Re-architected LLM trace ingestion into an \textbf{async BullMQ/Redis queue} (up to \textbf{10,000-trace batches}) on Kubernetes.
-\item Expanded the worker fleet to \textbf{10+ Docker deployments} (ETL, evals, analytics, billing), then root-caused an \textbf{8.5-hour eval stall} to KEDA ignoring BullMQ prioritized queues and replaced it with fixed-replica hot, LLM (Spot) and cron pools on GKE.
-\item Built the \textbf{LLM evaluation pipeline end-to-end}: an ETL service turning production AI-agent traces into datasets by running customers' Python transform code in a sandbox, shipping batch and realtime eval jobs behind \textbf{15+ REST endpoints}.
-\item Led the \textbf{AWS migration from OVHCloud} (EKS clusters, ECR, S3, CodeBuild CI/CD, WAF, IAM within a VPC), then the move from \textbf{AWS EKS to Google Cloud (GCP)} as Infrastructure as Code (IaC): \textbf{6 OpenTofu (Terraform) modules}, 2 Helm charts and Cloud Deploy CI/CD on private GKE; fixed \textbf{5 launch-blocking defects}; proved Cloud SQL restore in \textbf{6m17s}.
-\item Optimized analytics performance: moved \textbf{20+ dashboard endpoints} from live ClickHouse to precomputed PostgreSQL snapshots, cut peak rollup query memory for a heavy tenant from \textbf{4.01 to 1.75 GiB} via 90-day chunking, and removed \textbf{21\% duplicate spans}.
-\item Rebuilt usage billing as a \textbf{PostgreSQL credit ledger} that reserves credits before paid work and settles after (per-org locks, idempotency keys), so concurrent jobs cannot overspend or double-charge; added \textbf{AWS Marketplace billing} (SQS, EventBridge).
-\item Launched the \textbf{public TypeScript API} used by the tracing SDK (100+ tests), moved 10+ Next.js route handlers into one Node.js/Hono API with Redis rate limiting, and built a \textbf{Model Context Protocol (MCP) server} exposing \textbf{220+ OpenAPI routes} as tools.
-\item Architected and led the initial build of Orbit, an open-source realtime issue tracker (\textbf{60+ GitHub stars}) replacing Linear in-house: a \textbf{60+ table PostgreSQL schema}, a filter engine compiled to SQL, and sync of 20+ data types via Redis pub/sub and Bun WebSockets.
-\item Built the prepaid wallet for API.market, an API marketplace, in Next.js, Prisma and Stripe (\textbf{\$50K+ in transactions}, 23K+ operations, 1.1K+ users) and a voucher system distributing \textbf{\$6.3K+} via targeted (email-specific) and public (limit-based) campaigns.
+\item Moved LLM trace ingestion to an \textbf{async BullMQ/Redis queue} on Kubernetes (up to \textbf{10K-trace batches}), scaled workers to \textbf{10+ deployments}, and fixed an \textbf{8.5-hour eval stall} caused by autoscaling.
+\item Built the \textbf{LLM evaluation pipeline end-to-end}, turning AI-agent traces into datasets and eval jobs behind \textbf{15+ REST endpoints}.
+\item Led cloud migrations from \textbf{OVHCloud to AWS EKS}, then to \textbf{GCP (GKE)} with \textbf{6 OpenTofu (Terraform) modules} and Helm charts.
+\item Moved \textbf{20+ dashboard endpoints} from live ClickHouse to PostgreSQL snapshots, cutting peak memory from \textbf{4.01 to 1.75 GiB}.
+\item Rebuilt billing as a \textbf{PostgreSQL credit ledger} that prevents overspending and double-charging; added \textbf{AWS Marketplace billing}.
+\item Launched the \textbf{public TypeScript API} behind the tracing SDK and an \textbf{MCP server} exposing \textbf{220+ API routes} as tools.
+\item Led the initial build of \textbf{Orbit}, an open-source realtime issue tracker (\textbf{60+ GitHub stars}) that replaced Linear in-house.
+\item Built API.market's prepaid wallet with Stripe (\textbf{\$50K+ in transactions}, 1.1K+ users) and a voucher system that distributed \textbf{\$6.3K+}.
 \bulletsEnd
 
 \role{Software Engineer}{Feb 2025 - Mar 2025}{\href{https://www.crowdvolt.com}{CrowdV{}olt (YC W24)}}{Remote, NYC}
 \bulletsStart
-\item Set up shared \textbf{ESLint and Prettier} configs to enforce coding standards across a Turborepo monorepo (web, mobile, 7 packages).
-\item Improved site performance using \textbf{lazy loading, code splitting and asset optimization} for faster load times.
-\item Fixed \textbf{critical bugs} affecting user experience and platform stability.
+\item Set up shared \textbf{ESLint and Prettier} configs across a Turborepo monorepo (web, mobile, 7 packages).
+\item Improved site performance with \textbf{lazy loading and code splitting}, and fixed critical user-facing bugs.
 \bulletsEnd
 
 \role{Full Stack Engineer Intern}{Apr 2024 - Sep 2024}{\href{https://www.datawavelabs.io}{Datawavelabs}}{Remote, India}
 \bulletsStart
-\item Built the FastAPI backend (\textbf{35+ REST endpoints}) of a multi-cloud platform so users could manage AWS, Azure and GCP resources from one dashboard, with live credential checks, JWT sessions, Google OAuth and role-based access control (RBAC).
-\item Automated \textbf{AWS EKS cluster create and teardown} from the API by launching Terraform runner containers in Docker, streaming live status to the React UI over Redis Pub/Sub and Server-Sent Events (SSE).
+\item Built the FastAPI backend (\textbf{35+ REST endpoints}) of a dashboard for managing AWS, Azure and GCP resources, with OAuth and RBAC.
+\item Automated \textbf{AWS EKS cluster create and teardown} with Terraform runners in Docker, streaming live status to the UI over SSE.
 \bulletsEnd
 
 \entriesEnd
@@ -92,15 +90,13 @@
 \project{\href{https://devolympus.deviators.club}{Devolympus Hackathon Platform}}{Next.js, PostgreSQL, Prisma, Cloudinary, OAuth 2.0}{Apr 2025}
 \bulletsStart
 \item Built a \textbf{hackathon management system} handling \textbf{350+ registrations} and \textbf{80+ teams}, cutting admin work by \textbf{80\%}.
-\item Added Google OAuth login and built team registration, payment management, and document uploads to Cloudinary.
-\item Created an \textbf{admin dashboard} with role-based access and a PostgreSQL/Prisma backend for managing applications, teams, and payments.
+\item Added Google OAuth, team registration, payments, document uploads and a role-based \textbf{admin dashboard}.
 \bulletsEnd
 
 \project{\href{https://github.com/pulkitxm/deployIt}{Deployit}}{Next.js, Docker, Redis, S3, Express}{Oct 2024}
 \bulletsStart
-\item Built a \textbf{deployment platform} where users deploy repos via custom slug URLs with automated build pipelines.
-\item Used \textbf{Redis for deployment queues}, isolated \textbf{Docker build containers}, and S3 for serving static assets.
-\item Set up an \textbf{Express reverse proxy} to route traffic to deployed sites based on custom slugs.
+\item Built a \textbf{deployment platform} that builds repos in isolated \textbf{Docker containers} from a \textbf{Redis queue} and serves them from S3.
+\item Routed traffic to each deployment by custom slug through an \textbf{Express reverse proxy}.
 \bulletsEnd
 
 \entriesEnd
@@ -121,7 +117,7 @@
 \begin{itemize}[leftmargin=0.17in,label={\small\textbullet},itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt]\fontsize{9.9}{11}\selectfont
 \item \textbf{OpenAI Codex Hackathon}: Secured 7th position for \link{https://github.com/pulkitxm/warden}{Warden}, a trust layer for packages and agent diffs before they run.
 \item \textbf{KRMU Hackathon}: Won 1st place in the AI track with \link{https://github.com/pulkitxm/WanderAI}{WanderAI}.
-\item \textbf{Chairperson, Deviators Coding Club (2024 - 2025)}: Founded and led an independent college coding club. Organized workshops, tech events, and DevOlympus, a hackathon with 350+ participants.
+\item \textbf{Chairperson, Deviators Coding Club (2024 - 2025)}: Founded the club and organized DevOlympus, a 350+ participant hackathon.
 \item \textbf{ICPC Amritapuri 2023 Regionalist}: Qualified for the regional round of the global programming competition.
 \item \textbf{Gurugram University Ideathon Winner}: Secured first place for AI-driven travel solutions, awarded by the Chief Minister of Haryana.
 \end{itemize}
