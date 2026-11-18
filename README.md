@@ -20,11 +20,11 @@ Right now I'm working as a **Software Engineer at [Noveum.ai](https://noveum.ai)
 ## I write about what I learn
 
 I try to write the post I wish I'd found mid-debug. Recent ones:
+- [Graftify Your CLI](https://pulkit.blog/graftify-your-cli/)
 - [Tailwind Obfuscation](https://pulkit.blog/tailwind-obfuscation/)
 - [Kaksha: The App I Built for My Mother](https://pulkit.blog/kaksha/)
 - [Partial Clones, Shallow Clones, and Sparse Checkout](https://pulkit.blog/git-partial-clones/)
 - [My First Talk: Claude Directory](https://pulkit.blog/my-first-talk/)
-- [Git Worktrees](https://pulkit.blog/git-worktrees/)
 
 
 → All of it lives at **[pulkit.page](https://pulkit.page)**. I also talked through a lot of this on a podcast with **Harkirat Singh**!!
